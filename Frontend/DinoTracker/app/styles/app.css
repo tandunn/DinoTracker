@@ -1,0 +1,28 @@
+.login-input {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    padding: 10px 30px 10px;
+    background: #016aba;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.login-button-container {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}

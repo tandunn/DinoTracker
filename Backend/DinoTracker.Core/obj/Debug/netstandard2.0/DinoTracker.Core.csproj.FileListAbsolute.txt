@@ -1,0 +1,9 @@
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\bin\Debug\netstandard2.0\DinoTracker.Core.deps.json
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\bin\Debug\netstandard2.0\DinoTracker.Core.dll
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\bin\Debug\netstandard2.0\DinoTracker.Core.pdb
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\obj\Debug\netstandard2.0\DinoTracker.Core.csprojAssemblyReference.cache
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\obj\Debug\netstandard2.0\DinoTracker.Core.AssemblyInfoInputs.cache
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\obj\Debug\netstandard2.0\DinoTracker.Core.AssemblyInfo.cs
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\obj\Debug\netstandard2.0\DinoTracker.Core.csproj.CoreCompileInputs.cache
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\obj\Debug\netstandard2.0\DinoTracker.Core.dll
+C:\Users\tdunn\Desktop\DinoApp\Backend\DinoTracker.Core\obj\Debug\netstandard2.0\DinoTracker.Core.pdb
