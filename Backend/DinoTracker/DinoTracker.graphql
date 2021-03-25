@@ -9,9 +9,16 @@ type Query {
 
 type Mutation {
     createPaleontologist: Bool!
+    login(username: String, password: String): Bool!
 }
 
 type Dino {
     name: String!
     age: Int!
+}
+
+type Paleontologist {
+    username: String!
+    password: String!
+    signedIn: Bool!
 }

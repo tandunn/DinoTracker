@@ -11,5 +11,10 @@ namespace DinoTracker
         {
             return repo.GetAll();
         }
+
+        public IEnumerable<Paleontologist> GetPaleontologists([Service]IPaleontologistRepository repo)
+        {
+            return repo.GetAll();
+        }
     }
 }

@@ -27,6 +27,7 @@ namespace DinoTracker
             AddHotChocolateServices(services);
             AddDatabase(services);
             services.AddTransient<IDinoRepository, DinoRepository>();
+            services.AddTransient<IPaleontologistRepository, PaleontologistRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +57,7 @@ namespace DinoTracker
                 ISchema schema = SchemaBuilder.New()
                                 .AddDocumentFromString(ReadSchema())
                                 .BindResolver<DinoResolver>(c => c.To<Dino>())
+                                .BindResolver<PaleontologistResolver>(c => c.To<Paleontologist>())
                                 .BindResolver<Query>(c => c.To<Query>())
                                 .BindResolver<Mutation>(c => c.To<Mutation>())
                                 .AddServices(sp)
