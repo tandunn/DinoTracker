@@ -1,0 +1,7 @@
+/* ------------------------------------------------------------
+// Style for <%= entity.classyName.moduleName %>
+// File Location: /app/components/<%= entity.fullPath.moduleName %>
+// Made for: <%= dasherizedPackageName %>
+//
+// ** Replace this with appropriate scss options or remove **
+/ ------------------------------------------------------------*/
