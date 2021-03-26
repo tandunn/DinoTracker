@@ -3,14 +3,16 @@ using DinoTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DinoTracker.Migrations
 {
     [DbContext(typeof(DinoTrackerContext))]
-    partial class DinoTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20210325195020_AddPaleontologist")]
+    partial class AddPaleontologist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

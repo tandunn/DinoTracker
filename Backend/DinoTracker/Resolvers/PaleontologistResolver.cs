@@ -14,5 +14,10 @@ namespace DinoTracker.Resolvers
         {
             return paleontologist.Password;
         }
+
+        public bool LoggedIn([Parent]Paleontologist paleontologist)
+        {
+            return paleontologist.LoggedIn;
+        }
     }
 }

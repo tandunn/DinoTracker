@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DinoTracker.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace DinoTracker.Data
 {
@@ -32,6 +33,9 @@ namespace DinoTracker.Data
         {
             Paleontologist paleontologist = context.Paleontologists.Find(Id);
             paleontologist.LoggedIn = loggedIn;
+            context.Paleontologists.Update(paleontologist);
+            context.SaveChanges();
+            context.Entry(paleontologist).State = EntityState.Detached;
         }
     }
 }

@@ -18,23 +18,10 @@ namespace DinoTracker
             return true;
         }
 
-        public bool Login([Service]IPaleontologistRepository repo)
+        public bool Login([Service]IPaleontologistRepository repo, string username, string password)
         {
-            string userId = "user1"; // Obtained from frontend input field
-            string password = "1234"; // Obtained from frontend input field
-
-            List<Paleontologist> paleontologists = repo.FindPaleontologist(userId).ToList();
-
-            Paleontologist paleontologist;
-            if (paleontologists.Count > 0)
-                paleontologist = paleontologists[0];
-            else
-                return false;
-
-            if (paleontologist.Password != password)
-                return false;
-
-            repo.SetLoggedIn(paleontologist.Id, true);
+            LoginCommand loginCommand = new LoginCommand(repo, username, password);
+            loginCommand.Execute();
 
             return true;
         }

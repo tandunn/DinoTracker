@@ -8,8 +8,8 @@ type Query {
 }
 
 type Mutation {
-    createPaleontologist: Bool!
-    login(username: String, password: String): Bool!
+    createPaleontologist: Boolean!
+    login(username: String, password: String): Boolean!
 }
 
 type Dino {
@@ -20,5 +20,5 @@ type Dino {
 type Paleontologist {
     username: String!
     password: String!
-    signedIn: Bool!
+    LoggedIn: Boolean!
 }

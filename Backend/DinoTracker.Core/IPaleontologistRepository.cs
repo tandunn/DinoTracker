@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DinoTracker.Core;
 
-namespace DinoTracker.Data
+namespace DinoTracker.Core
 {
     public interface IPaleontologistRepository
     {
