@@ -26,3 +26,8 @@
     text-decoration: none;
     color: white;
 }
+
+#error-message {
+    display: flex;
+    justify-content: center;
+}

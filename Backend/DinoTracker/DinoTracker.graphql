@@ -20,5 +20,5 @@ type Dino {
 type Paleontologist {
     username: String!
     password: String!
-    LoggedIn: Boolean!
+    loggedIn: Boolean!
 }

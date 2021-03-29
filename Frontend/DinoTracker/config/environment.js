@@ -2,6 +2,15 @@
 
 module.exports = function (environment) {
   let ENV = {
+    apollo: {
+      apiURL: 'https://localhost:5001/graphql',
+      fetchOptions: {
+        mode: 'cors',
+      },
+      headers: {
+        'Content-Type': 'application/graphql',
+      }
+    },
     modulePrefix: 'dino-tracker',
     environment,
     rootURL: '/',
@@ -18,8 +27,7 @@ module.exports = function (environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      
     },
   };
 

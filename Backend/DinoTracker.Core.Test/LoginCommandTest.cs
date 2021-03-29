@@ -24,14 +24,14 @@ namespace DinoTracker.Core.Test
             paleontologists.Add(paleontologist);
 
             paleontologistRepository.Setup(p => p.FindPaleontologist(username))
-                                   .Returns(paleontologists);
+                                    .Returns(paleontologists);
             paleontologistRepository.Setup(p => p.FindPaleontologist("Wrong user"))
-                                   .Throws(new Exception("user not found"));
+                                    .Throws(new Exception("user not found"));
 
             Assert.AreEqual(paleontologist.LoggedIn, false);
 
-            paleontologistRepository.Setup(p => p.SetLoggedIn(123, true))
-                                   .Callback((int id, bool loggedIn) => paleontologist.LoggedIn = loggedIn);
+            paleontologistRepository.Setup(p => p.SetLoggedIn(paleontologist.Id, true))
+                                    .Callback((int id, bool loggedIn) => paleontologist.LoggedIn = loggedIn);
 
             LoginCommand loginCommand = new LoginCommand(paleontologistRepository.Object, username, "Wrong password");
             Assert.ThrowsException<Exception>(() => loginCommand.Execute());
