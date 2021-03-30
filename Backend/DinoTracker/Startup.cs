@@ -22,10 +22,15 @@ namespace DinoTracker
     {
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
+        private readonly string allowEmberOrigin = "_allowEmberOrigin";
+
         public void ConfigureServices(IServiceCollection services)
         {
             AddHotChocolateServices(services);
             AddDatabase(services);
+            AddHttps(services);
+            ConfigureCors(services);
             services.AddTransient<IDinoRepository, DinoRepository>();
             services.AddTransient<IPaleontologistRepository, PaleontologistRepository>();
         }
@@ -40,6 +45,10 @@ namespace DinoTracker
 
             app.UseRouting();
 
+            app.UseCors(this.allowEmberOrigin);
+
+            //app.UseAuthentication();
+
             app.UseGraphQL("/graphql");
 
             app.UseEndpoints(endpoints =>
@@ -53,7 +62,8 @@ namespace DinoTracker
 
         private void AddHotChocolateServices(IServiceCollection services)
         {
-            services.AddGraphQL(sp => {
+            services.AddGraphQL(sp =>
+            {
                 ISchema schema = SchemaBuilder.New()
                                 .AddDocumentFromString(ReadSchema())
                                 .BindResolver<DinoResolver>(c => c.To<Dino>())
@@ -72,20 +82,43 @@ namespace DinoTracker
                                                                         .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
         }
 
+        private void ConfigureCors(IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(this.allowEmberOrigin, builder =>
+                {
+                    builder.WithOrigins("https://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+                });
+            });
+        }
+
+        private void AddHttps(IServiceCollection services)
+        {
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+                options.HttpsPort = 5001;
+            });
+        }
+
         private string ReadSchema()
         {
             string schema;
             using (var schemaStream = Assembly.
                     GetExecutingAssembly().
                     GetManifestResourceStream("DinoTracker.DinoTracker.graphql"))
-                    {
-                        if (schemaStream == null)
-                        {
-                            throw new FileNotFoundException("Unable to load schema");
-                        }
-                        using var reader = new StreamReader(schemaStream);
-                        schema = reader.ReadToEnd();
-                    }
+            {
+                if (schemaStream == null)
+                {
+                    throw new FileNotFoundException("Unable to load schema");
+                }
+                using var reader = new StreamReader(schemaStream);
+                schema = reader.ReadToEnd();
+            }
             return schema;
         }
 

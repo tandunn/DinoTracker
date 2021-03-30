@@ -4,3 +4,9 @@ declare module 'dino-tracker/templates/*' {
   const tmpl: TemplateFactory;
   export default tmpl;
 }
+
+// Apollo GraphQL imports
+declare module '*.graphql' {
+  const doc: import('graphql').DocumentNode;
+  export default doc;
+}
