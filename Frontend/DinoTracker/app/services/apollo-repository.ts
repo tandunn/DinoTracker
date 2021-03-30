@@ -1,6 +1,8 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
-import mutation from "dino-tracker/graphql/mutations/login.graphql";
+import loginMutation from "dino-tracker/graphql/mutations/login.graphql";
+import createUserMutation from "dino-tracker/graphql/mutations/createUser.graphql";
+
 
 export default class ApolloRepository extends Service.extend({
   // anything which *must* be merged to prototype here
@@ -9,10 +11,22 @@ export default class ApolloRepository extends Service.extend({
 
   public async login(variables: { username: string, password: string }): Promise<boolean>
   {
-    let response : boolean;
     try
     {
-      response = await this.get('apollo').mutate({ mutation, variables }, "login");
+      let response = await this.apollo.mutate({ loginMutation, variables }, "login");
+      return response;
+    }
+    catch
+    {
+      return false;
+    }
+  }
+
+  public async createUser(variables: { name: string, username: string}): Promise<boolean>
+  {
+    try
+    {
+      let response = await this.apollo.mutate({ createUserMutation, variables }, "createUser");
       return response;
     }
     catch
