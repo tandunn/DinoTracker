@@ -33,6 +33,7 @@ namespace DinoTracker
             ConfigureCors(services);
             services.AddTransient<IDinoRepository, DinoRepository>();
             services.AddTransient<IPaleontologistRepository, PaleontologistRepository>();
+            services.AddTransient<IResearcherRepository, ResearcherRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +69,7 @@ namespace DinoTracker
                                 .AddDocumentFromString(ReadSchema())
                                 .BindResolver<DinoResolver>(c => c.To<Dino>())
                                 .BindResolver<PaleontologistResolver>(c => c.To<Paleontologist>())
+                                .BindResolver<ResearcherResolver>(c => c.To<Researcher>())
                                 .BindResolver<Query>(c => c.To<Query>())
                                 .BindResolver<Mutation>(c => c.To<Mutation>())
                                 .AddServices(sp)

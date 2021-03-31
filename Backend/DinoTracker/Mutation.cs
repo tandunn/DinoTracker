@@ -18,6 +18,14 @@ namespace DinoTracker
             return true;
         }
 
+        public bool CreateResearcher([Service]IResearcherRepository repo, string name)
+        {
+            CreateResearcherCommand createCommand = new CreateResearcherCommand(repo, name);
+            createCommand.Execute();
+            
+            return true;
+        }
+
         public bool Login([Service]IPaleontologistRepository repo, string username, string password)
         {
             LoginCommand loginCommand = new LoginCommand(repo, username, password);

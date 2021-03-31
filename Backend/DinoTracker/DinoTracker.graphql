@@ -24,3 +24,7 @@ type Paleontologist {
     password: String!
     loggedIn: Boolean!
 }
+
+type Researcher {
+    name: String!
+}
