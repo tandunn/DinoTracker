@@ -16,5 +16,10 @@ namespace DinoTracker
         {
             return repo.GetAll();
         }
+
+        public IEnumerable<Researcher> GetResearchers([Service]IResearcherRepository repo)
+        {
+            return repo.GetAll();
+        }
     }
 }

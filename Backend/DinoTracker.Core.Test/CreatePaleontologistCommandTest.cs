@@ -8,12 +8,12 @@ using System.Collections.Generic;
 namespace DinoTracker.Core.Test
 {
     [TestClass]
-    public class CreateUserCommandTest
+    public class CreatePaleontologistCommandTest
     {
-            string name = "Test User";
-            string username = "user1";
-            string password = "1234";
-            bool loggedIn = false;
+        string name = "Test User";
+        string username = "user1";
+        string password = "1234";
+        bool loggedIn = false;
 
         [TestMethod]
         public void CreatePaleontologistCallsRepoTest()

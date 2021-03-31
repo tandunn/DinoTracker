@@ -8,6 +8,7 @@ namespace DinoTracker.Data
         public DbSet<Dino> Dinos { get; set; } = null!;
 
         public DbSet<Paleontologist> Paleontologists { get; set; } = null!;
+        public DbSet<Researcher> Researchers { get; set; } = null!;
 
         public DinoTrackerContext()
         {
