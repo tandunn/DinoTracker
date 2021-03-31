@@ -1,1 +1,20 @@
 <p>Welcome to the staff page, where you can view a list of who works here.</p>
+<button class="button" {{on "click" this.toggleCreateUserModal}}>Create</button>
+{{#if this.isShowingModal}}
+  {{#modal-dialog
+      targetAttachment="center"
+      translucentOverlay=true
+  }}
+    <h1>Create user</h1>
+    {{#if this.isDisplayingErrorMessage}}
+        <div id="error-message">Username possibly already in use</div>
+    {{/if}}
+    <p class="input-label">Full Name</p>
+    <Input id="name-field" @value={{this.name}} placeholder="full name"></Input>
+    <p class="input-label">Username</p>
+    <Input id="username-field" @value={{this.username}} placeholder="username"></Input>
+    <p>The default password for new users is 1234</p>
+    <div id="cancel-button"><button class="button" {{on "click" this.toggleCreateUserModal}}>Cancel</button></div>
+    <div id="create-button"><button class="button" {{on "click" this.attemptCreateUser}}>Create</button></div>
+  {{/modal-dialog}}
+{{/if}}

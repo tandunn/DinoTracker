@@ -4,7 +4,8 @@ import { action } from '@ember/object';
 import { inject as service } from "@ember/service";
 import ApolloRepository from "dino-tracker/services/apollo-repository";
 
-export default class LoginController extends Controller {
+export default class LoginController extends Controller
+{
   @service router: any;
   @service apolloRepository!: ApolloRepository;
 
@@ -16,11 +17,10 @@ export default class LoginController extends Controller {
   async authenticate()
   {
     let variables = { username: this.username, password: this.password };
-    let response: boolean;
 
     try
     {
-      response = await this.get('apolloRepository').login(variables);
+      let response = await this.apolloRepository.login(variables);
       if (response == true)
         this.router.transitionTo("staff");
       else
