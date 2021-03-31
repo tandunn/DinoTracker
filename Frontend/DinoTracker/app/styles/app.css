@@ -20,6 +20,23 @@
     font-size: 20px;
 }
 
+.input-field {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 300px;
+    font-size: 15px;
+    border-color: #016aba;
+}
+
+.input-checkbox {
+    width: 20px;
+    height: 20px;
+}
+
+#buttons-row {
+    display: flex;
+}
+
 .login-button-container {
     margin-top: 10px;
     margin-left: 10px;

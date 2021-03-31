@@ -7,6 +7,6 @@
 {{#if this.isDisplayingErrorMessage}}
   <div id="error-message">Incorrect username or password</div>
 {{/if}}
-<div class="login-input"><Input @value={{this.username}} placeholder="username"></Input></div>
-<div class="login-input"><Input @value={{this.password}} placeholder="password"></Input></div>
+<div class="login-input"><Input class="input-field" @value={{this.username}} placeholder="username"></Input></div>
+<div class="login-input"><Input class="input-field" @value={{this.password}} placeholder="password"></Input></div>
 <div class="login-button-container"><button class="button" {{on "click" this.authenticate}}>Login</button></div>
