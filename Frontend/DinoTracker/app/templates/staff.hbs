@@ -9,12 +9,18 @@
     {{#if this.isDisplayingErrorMessage}}
         <div id="error-message">Username possibly already in use</div>
     {{/if}}
+    <p class="input-label">Grant login permission</p>
+    <Input type="checkbox" class="input-checkbox" {{on "click" this.toggleIsPaleontologist}}></Input>
     <p class="input-label">Full Name</p>
-    <Input id="name-field" @value={{this.name}} placeholder="full name"></Input>
-    <p class="input-label">Username</p>
-    <Input id="username-field" @value={{this.username}} placeholder="username"></Input>
-    <p>The default password for new users is 1234</p>
-    <div id="cancel-button"><button class="button" {{on "click" this.toggleCreateUserModal}}>Cancel</button></div>
-    <div id="create-button"><button class="button" {{on "click" this.attemptCreateUser}}>Create</button></div>
+    <Input class="input-field" id="name-field" @value={{this.name}} placeholder="full name"></Input>
+    {{#if this.isPaleontologist}}
+      <p class="input-label">Username</p>
+      <Input class="input-field" id="username-field" @value={{this.username}} placeholder="username"></Input>
+      <p>The default password for new users is 1234</p>
+    {{/if}}
+    <div id="buttons-row">
+      <div id="cancel-button"><button class="button" {{on "click" this.toggleCreateUserModal}}>Cancel</button></div>
+      <div id="create-button"><button class="button" {{on "click" this.attemptCreateUser}}>Create</button></div>
+    </div>
   {{/modal-dialog}}
 {{/if}}

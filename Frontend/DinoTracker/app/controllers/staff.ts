@@ -10,6 +10,7 @@ export default class Staff extends Controller
 
   @tracked isDisplayingErrorMessage = false;
   @tracked isShowingModal = false;
+  @tracked isPaleontologist = false;
   @tracked name = '';
   @tracked username = '';
 
@@ -17,25 +18,43 @@ export default class Staff extends Controller
   toggleCreateUserModal()
   {
     this.isDisplayingErrorMessage = false;
+    this.isPaleontologist = false;
     this.name = '';
     this.username = '';
     this.isShowingModal = !this.isShowingModal;
   }
 
   @action
+  toggleIsPaleontologist()
+  {
+    this.isPaleontologist = !this.isPaleontologist;
+  }
+
+  @action
   async attemptCreateUser()
   {
-    let variables = { name: this.name, username: this.username};
     try
     {
-      let response = await this.apolloRepository.createUser(variables);
+      let response : boolean;
+      if (this.isPaleontologist)
+      {
+        let variables = { name: this.name, username: this.username };
+        response = await this.apolloRepository.createPaleontologist(variables);
+      }
+      else
+      {
+        let variables = { name: this.name };
+        response = await this.apolloRepository.createResearcher(variables);
+      }
       if (response == true)
       {
         console.log("User created");
         this.toggleCreateUserModal();
       }
       else
+      {
         this.isDisplayingErrorMessage = true;
+      }
     }
     catch
     {

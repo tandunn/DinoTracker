@@ -1,0 +1,3 @@
+mutation createPaleontologist($name: String!, $username: String!) {
+    createPaleontologist(name: $name, username: $username)
+}

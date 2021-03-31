@@ -1,7 +1,8 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import loginMutation from "dino-tracker/graphql/mutations/login.graphql";
-import createUserMutation from "dino-tracker/graphql/mutations/createUser.graphql";
+import createPaleontologistMutation from "dino-tracker/graphql/mutations/createPaleontologist.graphql";
+import createResearcherMutation from "dino-tracker/graphql/mutations/createResearcher.graphql";
 
 
 export default class ApolloRepository extends Service.extend({
@@ -22,11 +23,24 @@ export default class ApolloRepository extends Service.extend({
     }
   }
 
-  public async createUser(variables: { name: string, username: string}): Promise<boolean>
+  public async createPaleontologist(variables: { name: string, username: string }): Promise<boolean>
   {
     try
     {
-      let response = await this.apollo.mutate({ mutation: createUserMutation, variables }, "createUser");
+      let response = await this.apollo.mutate({ mutation: createPaleontologistMutation, variables }, "createPaleontologist");
+      return response;
+    }
+    catch
+    {
+      return false;
+    }
+  }
+
+  public async createResearcher(variables: { name: string }): Promise<boolean>
+  {
+    try
+    {
+      let response = await this.apollo.mutate({ mutation: createResearcherMutation, variables }, "createResearcher");
       return response;
     }
     catch

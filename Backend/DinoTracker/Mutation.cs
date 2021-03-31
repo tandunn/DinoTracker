@@ -8,7 +8,7 @@ namespace DinoTracker
 {
     public class Mutation
     {
-        public bool CreateUser([Service]IPaleontologistRepository repo, string name, string username)
+        public bool CreatePaleontologist([Service]IPaleontologistRepository repo, string name, string username)
         {
             string password = "1234"; // Default password for new users
 

@@ -16,7 +16,7 @@ namespace DinoTracker.Core.Test
             bool loggedIn = false;
 
         [TestMethod]
-        public void CreateUserCallsRepoTest()
+        public void CreatePaleontologistCallsRepoTest()
         {
             Mock<IPaleontologistRepository> paleontologistRepository = new Mock<IPaleontologistRepository>();
 
@@ -34,7 +34,7 @@ namespace DinoTracker.Core.Test
         }
 
         [TestMethod]
-        public void CreateUserWithExistingUsernameThrowsExceptionTest()
+        public void CreatePaleontologistWithExistingUsernameThrowsExceptionTest()
         {
             Mock<IPaleontologistRepository> paleontologistRepository = new Mock<IPaleontologistRepository>();
 
