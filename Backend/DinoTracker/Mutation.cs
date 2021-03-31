@@ -8,12 +8,12 @@ namespace DinoTracker
 {
     public class Mutation
     {
-        public bool CreatePaleontologist([Service]IPaleontologistRepository repo)
+        public bool CreateUser([Service]IPaleontologistRepository repo, string name, string username)
         {
-            string userId = "user1"; // Obtained from frontend input field
-            string password = "1234"; // Obtained from frontend input field
+            string password = "1234"; // Default password for new users
 
-            // Call repo function to add paleontologist to dinoTrackerContext here
+            CreatePaleontologistCommand createCommand = new CreatePaleontologistCommand(repo, name, username, password);
+            createCommand.Execute();
             
             return true;
         }

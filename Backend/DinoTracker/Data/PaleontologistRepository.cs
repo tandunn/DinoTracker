@@ -37,5 +37,13 @@ namespace DinoTracker.Data
             context.SaveChanges();
             context.Entry(paleontologist).State = EntityState.Detached;
         }
+
+        void IPaleontologistRepository.CreatePaleontologist(string name, string username, string password)
+        {
+            Paleontologist paleontologist = new Paleontologist(name, username, password, false);
+            context.Paleontologists.Add(paleontologist);
+            context.SaveChanges();
+            context.Entry(paleontologist).State = EntityState.Detached;
+        }
     }
 }

@@ -13,13 +13,14 @@ namespace DinoTracker.Core.Test
         [TestMethod]
         public void ExecuteTest()
         {
+            string name = "Test User";
             string username = "user1";
             string password = "1234";
 
             Mock<IPaleontologistRepository> paleontologistRepository = new Mock<IPaleontologistRepository>();
 
             List<Paleontologist> paleontologists = new List<Paleontologist>();
-            Paleontologist paleontologist = new Paleontologist(username, password, false);
+            Paleontologist paleontologist = new Paleontologist(name, username, password, false);
             paleontologist.Id = 123;
             paleontologists.Add(paleontologist);
 

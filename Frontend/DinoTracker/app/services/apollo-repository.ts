@@ -13,7 +13,7 @@ export default class ApolloRepository extends Service.extend({
   {
     try
     {
-      let response = await this.apollo.mutate({ loginMutation, variables }, "login");
+      let response = await this.apollo.mutate({ mutation: loginMutation, variables }, "login");
       return response;
     }
     catch
@@ -26,7 +26,7 @@ export default class ApolloRepository extends Service.extend({
   {
     try
     {
-      let response = await this.apollo.mutate({ createUserMutation, variables }, "createUser");
+      let response = await this.apollo.mutate({ mutation: createUserMutation, variables }, "createUser");
       return response;
     }
     catch

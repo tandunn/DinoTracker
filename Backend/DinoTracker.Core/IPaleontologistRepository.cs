@@ -9,5 +9,6 @@ namespace DinoTracker.Core
         IEnumerable<Paleontologist> GetAll();
         IEnumerable<Paleontologist> FindPaleontologist(string username);
         void SetLoggedIn(int Id, bool loggedIn);
+        void CreatePaleontologist(string name, string username, string password);
     }
 }
