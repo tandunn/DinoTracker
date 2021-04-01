@@ -5,9 +5,9 @@ namespace DinoTracker.Resolvers
 {
     public class ResearcherResolver
     {
-        public string GetName([Parent]Paleontologist paleontologist)
+        public string GetName([Parent]Researcher researcher)
         {
-            return paleontologist.Name;
+            return researcher.Name;
         }
     }
 }

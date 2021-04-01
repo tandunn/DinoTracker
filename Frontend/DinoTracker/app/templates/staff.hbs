@@ -1,13 +1,41 @@
-<p>Welcome to the staff page, where you can view a list of who works here.</p>
-<button class="button" {{on "click" this.toggleCreateUserModal}}>Create</button>
+<h2>Welcome to the staff page, where you can view a list of who works here.</h2>
+<LinkTo @route="/" class="link">
+  Home
+</LinkTo>
+{{#if this.isDisplayingFetchErrorMessage}}
+  <div id="error-message">Error fetching data</div>
+{{/if}}
+<div id="staff">
+  <div id="paleontologists">
+    <p class="staff-label">Paleontologists</p>
+    {{#each this.paleontologists as |person|}}
+      <div class="user">{{person.name}}</div>
+    {{else}}
+      Loading data.
+    {{/each}}
+  </div>
+  <div id="researchers">
+    <p class="staff-label">Researchers</p>
+    {{#each this.researchers as |person|}}
+      <div class="user">{{person.name}}</div>
+    {{else}}
+      Loading data.
+    {{/each}}
+  </div>
+</div>
+{{#if this.hasCreateAccess}}
+  <div id="create-button">
+    <button class="button" {{on "click" this.toggleCreateUserModal}}>Create</button>
+  </div>
+{{/if}}
 {{#if this.isShowingModal}}
   {{#modal-dialog
-      targetAttachment="center"
-      translucentOverlay=true
+    targetAttachment="center"
+    translucentOverlay=true
   }}
     <h1>Create user</h1>
-    {{#if this.isDisplayingErrorMessage}}
-        <div id="error-message">Username possibly already in use</div>
+    {{#if this.isDisplayingLoginErrorMessage}}
+      <div id="error-message">Username possibly already in use</div>
     {{/if}}
     <p class="input-label">Grant login permission</p>
     <Input type="checkbox" class="input-checkbox" {{on "click" this.toggleIsPaleontologist}}></Input>
