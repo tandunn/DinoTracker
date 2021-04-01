@@ -5,6 +5,8 @@ schema {
 
 type Query {
     dinos: [Dino!]!
+    researchers: [Researcher!]!
+    paleontologists: [Paleontologist!]!
 }
 
 type Mutation {

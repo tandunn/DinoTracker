@@ -1,0 +1,5 @@
+query paleontologists {
+    paleontologists {
+        name
+    }
+}
