@@ -5,14 +5,17 @@ import { inject as service } from "@ember/service";
 import ApolloRepository from 'dino-tracker/services/apollo-repository';
 import ViewableStaff from 'dino-tracker/viewable-staff';
 import EmberArray from '@ember/array';
+import Authentication from 'dino-tracker/services/authentication';
 
 export default class Staff extends Controller {
   @service apolloRepository!: ApolloRepository;
+  @service authentication!: Authentication;
 
   @tracked isDisplayingLoginErrorMessage = false;
   @tracked isDisplayingFetchErrorMessage = false;
   @tracked isShowingModal = false;
   @tracked isPaleontologist = false;
+  @tracked hasCreateAccess = false;
   @tracked name = '';
   @tracked username = '';
   @tracked paleontologists!: EmberArray<ViewableStaff>;
@@ -67,6 +70,19 @@ export default class Staff extends Controller {
     catch
     {
       this.isDisplayingFetchErrorMessage = true;
+    }
+  }
+
+  @action
+  checkCreateAccess()
+  {
+    if (this.authentication.isLoggedIn && this.authentication.username == "user1") // Head Paleontologist
+    {
+      this.hasCreateAccess = true;
+    }
+    else
+    {
+      this.hasCreateAccess = false;
     }
   }
 }
